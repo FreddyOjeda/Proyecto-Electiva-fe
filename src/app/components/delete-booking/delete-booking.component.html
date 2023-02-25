@@ -1,0 +1,77 @@
+<div class="container-fluid position-absolute top-50 start-50 translate-middle">
+    <div class="container my-5 text-center rounded border border-dark back px-3 py-5" style="background-color: #e3e3dfa6;">
+        <h1 class="text-center">Eliminar prestamo</h1>
+        <hr>
+        <p class="fs-5">Eliga por favor su reserva a eliminar.</p>
+        <div class="row text-start">
+            <div class="col-2">
+                <label for="person" class="form-label fs-5">Persona que solicita</label>
+            </div>
+            <div class="col-7">
+                <select name="person" id="person" class="form-control" onchange="editing()">
+                    <option value="Seleccione una opción...">Seleccione una opción...</option>
+                        <option value="<%=t.id%>">t.id -- t.persons -- t.car
+                        </option>
+                </select>
+            </div>
+            <!--div class="col-3">
+                <button class="btn btn-primary w-100" onclick="editing()"><i class="fas fa-search"></i>
+                    Consultar</button>
+            </div-->
+        </div>
+        <hr>
+        <form action="/deleteData/id" method="post">
+            <div class="row">
+                <input type="hidden" value="<%=temp.id%>" id="id" name="id" class="form-control">
+                <div class="col-4">
+                    <div class="mb-3 text-start">
+                        <label for="persons" class="form-label">Persona que solicita</label>
+                        <select name="persons" id="persons" class="form-control" disabled>
+                            <option id="p" value="">
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-2">
+                    <div class="mb-3 text-start">
+                        <label for="car" class="form-label">Auto que solicita</label>
+                        <select name="car" id="car" class="form-control" disabled>
+                                <option id="c" value="carro">
+                                </option>
+
+                        </select>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="mb-3 text-start">
+                        <label for="dateBooking" class="form-label">Fecha de préstamo</label>
+                        <input disabled type="datetime-local" class="form-control" name="dateBooking" id="dateBooking"
+                            value="<%=temp[1].booking%>">
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="mb-3 text-start">
+                        <label for="dateDelivery" class="form-label">Fecha de entrega</label>
+                        <input disabled type="datetime-local" class="form-control" name="dateDelivery" id="dateDelivery"
+                            value="<%=temp[1].delivery%>">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3 text-start">
+                        <label for="observations" class="form-label">Observaciones adicionales</label>
+                        <textarea disabled class="form-control" name="observations" id="observations"
+                            rows="4"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                <a href="/" class="btn btn-primary"><i class="fas fa-home"></i>  Inicio</a>
+                <button type="submit" class="btn btn-danger"><i class="fas fa-delete"></i>  Eliminar reserva</button>
+            </div>
+        </form>
+        <hr>
+    
+    </div>
+</div>

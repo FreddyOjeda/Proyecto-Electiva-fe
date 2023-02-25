@@ -1,0 +1,14 @@
+html,body{
+    margin: 0%;
+    padding: 0%;
+    background-color: black;
+}
+
+.contain{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width:100%;
+    height: 100vh;
+}
