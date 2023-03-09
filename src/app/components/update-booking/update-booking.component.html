@@ -38,14 +38,14 @@
                 <div class="col-3">
                     <div class="mb-3 text-start">
                         <label for="dateBooking" class="form-label">Fecha de préstamo</label>
-                        <input type="datetime-local" class="form-control" name="dateBooking" id="dateBooking"
+                        <input #xd type="datetime-local" class="form-control" name="dateBooking" id="xd"
                             value="{{booking.booking}}">
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="mb-3 text-start">
                         <label for="dateDelivery" class="form-label">Fecha de entrega</label>
-                        <input type="datetime-local" class="form-control" name="dateDelivery" id="dateDelivery"
+                        <input #d type="datetime-local" class="form-control" name="dateDelivery" id="d"
                             value="{{booking.delivery}}">
                     </div>
                 </div>
@@ -54,8 +54,7 @@
                 <div class="col">
                     <div class="mb-3 text-start">
                         <label for="observations" class="form-label">Observaciones adicionales</label>
-                        <textarea class="form-control" name="observations" id="observations"
-                            rows="4">{{booking.observations}}</textarea>
+                        <textarea #o class="form-control" name="observations" rows="4">{{booking.observations}}</textarea>
                     </div>
                 </div>
             </div>
@@ -65,7 +64,7 @@
                 </div>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                     <a href="/" class="btn btn-primary"><i class="fas fa-home"></i> Inicio</a>
-                    <button type="submit" class="btn btn-success"><i class="fas fa-edit"></i> Editarreserva</button>
+                    <button class="btn btn-success" (click)="update(xd.value,d.value,o.value)"><i class="fas fa-edit" ></i> Editarreserva</button>
             </div>
             <hr>
     </div>

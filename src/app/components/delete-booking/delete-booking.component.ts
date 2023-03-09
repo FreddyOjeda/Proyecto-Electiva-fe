@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Booking } from 'src/app/model/Booking';
 import { environment } from 'src/environments/environment';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-delete-booking',
@@ -30,16 +31,30 @@ export class DeleteBookingComponent {
   }
 
   delete(){
-    fetch(`${environment.apiUrl}/${this.booking._id}`,{
-      method:'DELETE',
-      headers: {
-        'Content-Type': 'application/json'
-        // 'Content-Type': 'application/x-www-form-urlencoded',
-      },
+    Swal
+    .fire({
+        title: `Reservacion #${this.booking._id}`,
+        text: "¿Sguro desea elminar?",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: "Sí, eliminar",
+        cancelButtonText: "Cancelar",
     })
-    .then(resp=>resp.json())
-    .then(data=>{
-      console.log(data.Data);
-    })
+    .then(resultado => {
+        if (resultado.value) {
+            // Hicieron click en "Sí"
+            fetch(`${environment.apiUrl}/${this.booking._id}`,{
+              method:'DELETE',
+              headers: {
+                'Content-Type': 'application/json'
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+              },
+            })
+            .then(resp=>resp.json())
+            .then(data=>{
+              Swal.fire('Eliminado')
+            })
+        }
+    });
   }
 }

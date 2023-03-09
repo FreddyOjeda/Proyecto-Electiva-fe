@@ -17,7 +17,6 @@ export class ReadBookingComponent {
     .then(resp => resp.json())
     .then(data =>{
       this.info= data.Data
-      console.log(this.info)
     })
   }
 

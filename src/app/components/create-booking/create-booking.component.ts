@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Booking } from 'src/app/model/Booking';
+import Swal from 'sweetalert2';
+
 
 @Component({
   selector: 'app-create-booking',
@@ -15,8 +17,6 @@ export class CreateBookingComponent {
 
   saveBooking(p:String,c:String,d1:String,d2:String,o:String){
     //this.httpClient.post<Post | HttpErrorResponse>(`${this.host}/posts/create`, formData);
-    alert('entro')
-    alert(p)
     let person = document.getElementById('person')
     let data = new Booking();
     data.booking=d1
@@ -24,7 +24,6 @@ export class CreateBookingComponent {
     data.car=c
     data.person=p
     data.observations=o
-    console.log(data)
     fetch(`${environment.apiUrl}`,{
       method:'POST',
       headers: {
@@ -35,7 +34,11 @@ export class CreateBookingComponent {
     })
     .then(resp=>resp.json())
     .then(data=>{
-      console.log(data.Data);
+      if(data.Success){
+        Swal.fire("Reservacion Exitosa :)");
+      }else{
+        Swal.fire("No se reservó :(");
+      }
     })
   }
 
