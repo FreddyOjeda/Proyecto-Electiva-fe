@@ -12,6 +12,8 @@ import { ReadBookingComponent } from './components/read-booking/read-booking.com
 import { UpdateBookingComponent } from './components/update-booking/update-booking.component';
 import { DeleteBookingComponent } from './components/delete-booking/delete-booking.component';
 
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +27,8 @@ import { DeleteBookingComponent } from './components/delete-booking/delete-booki
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatCardModule
+    MatCardModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

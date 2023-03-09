@@ -8,10 +8,9 @@
                 <label for="person" class="form-label fs-5">Persona que solicita</label>
             </div>
             <div class="col-7">
-                <select name="person" id="person" class="form-control" onchange="editing()">
+                <select #id name="person" id="person" class="form-control" (change)="editing(id.value)">
                     <option value="Seleccione una opción...">Seleccione una opción...</option>
-                        <option value="<%=t.id%>">t.id -- t.persons -- t.car
-                        </option>
+                    <option *ngFor="let t of info" value="{{t._id}}">{{t._id}} -- {{t.person}} -- {{t.car}}</option>
                 </select>
             </div>
             <!--div class="col-3">
@@ -20,14 +19,13 @@
             </div-->
         </div>
         <hr>
-        <form action="/deleteData/id" method="post">
             <div class="row">
                 <input type="hidden" value="<%=temp.id%>" id="id" name="id" class="form-control">
                 <div class="col-4">
                     <div class="mb-3 text-start">
                         <label for="persons" class="form-label">Persona que solicita</label>
                         <select name="persons" id="persons" class="form-control" disabled>
-                            <option id="p" value="">
+                            <option id="p" value="">{{booking.person}}
                             </option>
                         </select>
                     </div>
@@ -36,7 +34,7 @@
                     <div class="mb-3 text-start">
                         <label for="car" class="form-label">Auto que solicita</label>
                         <select name="car" id="car" class="form-control" disabled>
-                                <option id="c" value="carro">
+                                <option id="c" value="carro">{{booking.car}}
                                 </option>
 
                         </select>
@@ -45,15 +43,15 @@
                 <div class="col-3">
                     <div class="mb-3 text-start">
                         <label for="dateBooking" class="form-label">Fecha de préstamo</label>
-                        <input disabled type="datetime-local" class="form-control" name="dateBooking" id="dateBooking"
-                            value="<%=temp[1].booking%>">
+                        <input disabled type="text" class="form-control" name="dateBooking" id="dateBooking"
+                            value="{{booking.booking}}">
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="mb-3 text-start">
                         <label for="dateDelivery" class="form-label">Fecha de entrega</label>
-                        <input disabled type="datetime-local" class="form-control" name="dateDelivery" id="dateDelivery"
-                            value="<%=temp[1].delivery%>">
+                        <input disabled type="text" class="form-control" name="dateDelivery" id="dateDelivery"
+                            value="{{booking.delivery}}">
                     </div>
                 </div>
             </div>
@@ -62,15 +60,14 @@
                     <div class="mb-3 text-start">
                         <label for="observations" class="form-label">Observaciones adicionales</label>
                         <textarea disabled class="form-control" name="observations" id="observations"
-                            rows="4"></textarea>
+                            rows="4">{{booking.observations}}</textarea>
                     </div>
                 </div>
             </div>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <a href="/" class="btn btn-primary"><i class="fas fa-home"></i>  Inicio</a>
-                <button type="submit" class="btn btn-danger"><i class="fas fa-delete"></i>  Eliminar reserva</button>
+                <button  class="btn btn-danger" (click)="delete()"><i class="fas fa-delete"></i>  Eliminar reserva</button>
             </div>
-        </form>
         <hr>
     
     </div>

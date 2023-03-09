@@ -4,7 +4,7 @@
         <hr>
         <div class="row">
             <div class="col">
-                   <p class="fs-5 ">Hay un total de <strong><%=temp.length-1%></strong> registros</p>
+                   <p class="fs-5 ">Hay un total de <strong>{{info.length}}</strong> registros</p>
             
                     <table class="table table-striped table-hover bg-light">
                         <thead>
@@ -16,13 +16,13 @@
                             <th>Observaciones</th>
                         </thead>
                         <tbody>
-                                <tr>
-                                    <td>temp.id</td>
-                                    <td>temp.persons</td>
-                                    <td>temp.car</td>
-                                    <td>temp.booking</td>
-                                    <td>temp.delivery</td>
-                                    <td>temp.observations</td>
+                                <tr *ngFor="let b of info">
+                                    <td>{{b._id}}</td>
+                                    <td>{{b.person}}</td>
+                                    <td>{{b.car}}</td>
+                                    <td>{{b.booking}}</td>
+                                    <td>{{b.delivery}}</td>
+                                    <td>{{b.observations}}</td>
                                 </tr>
                         </tbody>
                     </table>
