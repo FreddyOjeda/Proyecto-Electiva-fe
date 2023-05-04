@@ -1,5 +1,5 @@
 export class Booking{
-    _id!:String;
+    id!:String;
     person!:String;
     car!:String;
     booking!:String;

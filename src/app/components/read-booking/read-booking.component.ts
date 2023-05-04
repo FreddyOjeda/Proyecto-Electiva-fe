@@ -16,7 +16,9 @@ export class ReadBookingComponent {
     fetch(environment.apiUrl)
     .then(resp => resp.json())
     .then(data =>{
-      this.info= data.Data
+      this.info= data.data
+      //console.log(data);
+      
     })
   }
 

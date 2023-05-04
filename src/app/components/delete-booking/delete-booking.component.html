@@ -10,7 +10,7 @@
             <div class="col-7">
                 <select #id name="person" id="person" class="form-control" (change)="editing(id.value)">
                     <option value="Seleccione una opción...">Seleccione una opción...</option>
-                    <option *ngFor="let t of info" value="{{t._id}}">{{t._id}} -- {{t.person}} -- {{t.car}}</option>
+                    <option *ngFor="let t of info" value="{{t.id}}">{{t.id}} -- {{t.person}} -- {{t.car}}</option>
                 </select>
             </div>
             <!--div class="col-3">

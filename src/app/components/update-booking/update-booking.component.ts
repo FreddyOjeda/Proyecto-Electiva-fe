@@ -13,21 +13,25 @@ export class UpdateBookingComponent {
   flag:boolean=false
   info !: Booking[]
   booking!:Booking
+  selectedOption!: string;
+
 
   constructor(){
     fetch(environment.apiUrl)
     .then(resp => resp.json())
     .then(data =>{
-      this.info= data.Data
+      this.info= data.data
     })
   }
 
   editing(id:String){
     this.booking = new Booking()
-    fetch(environment.apiUrl+'/'+id)
+    const url = environment.apiUrl+'/'+id;
+    
+    fetch(url)
     .then(resp=>resp.json())
     .then(data=>{
-      this.booking=data.Data
+      this.booking=data.data
       this.booking.booking=this.booking.booking.slice(0,-8)
       this.booking.delivery=this.booking.delivery.slice(0,-8)
     })
@@ -39,7 +43,7 @@ export class UpdateBookingComponent {
     this.booking.delivery = d
     this.booking.booking = b
     this.booking.observations = o
-    fetch(`${environment.apiUrl}/${this.booking._id}`,{
+    fetch(`${environment.apiUrl}/${this.booking.id}`,{
       method:'PUT',
       headers: {
         'Content-Type': 'application/json'
@@ -49,7 +53,9 @@ export class UpdateBookingComponent {
     })
     .then(resp=>resp.json())
     .then(data=>{
-      if(data.Success){
+      console.log(data);
+      
+      if(data.message=="Update Completed!"){
         Swal.fire("Actualizacion Exitosa :)");
       }else{
         Swal.fire("No se actualizó :(");

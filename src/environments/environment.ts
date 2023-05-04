@@ -1,4 +1,4 @@
 export const environment = {
 	production: false,
-	apiUrl: 'https://99e5-132-255-20-66.ngrok.io/bookings'
+	apiUrl: 'http://127.0.0.1:8080/bookings'
 };

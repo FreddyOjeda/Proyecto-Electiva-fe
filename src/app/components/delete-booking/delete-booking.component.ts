@@ -17,7 +17,7 @@ export class DeleteBookingComponent {
     fetch(environment.apiUrl)
     .then(resp => resp.json())
     .then(data =>{
-      this.info= data.Data
+      this.info= data.data
     })
   }
 
@@ -26,14 +26,14 @@ export class DeleteBookingComponent {
     fetch(environment.apiUrl+'/'+id)
     .then(resp=>resp.json())
     .then(data=>{
-      this.booking=data.Data
+      this.booking=data.data
     })
   }
 
   delete(){
     Swal
     .fire({
-        title: `Reservacion #${this.booking._id}`,
+        title: `Reservacion #${this.booking.id}`,
         text: "¿Sguro desea elminar?",
         icon: 'warning',
         showCancelButton: true,
@@ -43,7 +43,7 @@ export class DeleteBookingComponent {
     .then(resultado => {
         if (resultado.value) {
             // Hicieron click en "Sí"
-            fetch(`${environment.apiUrl}/${this.booking._id}`,{
+            fetch(`${environment.apiUrl}/${this.booking.id}`,{
               method:'DELETE',
               headers: {
                 'Content-Type': 'application/json'

@@ -34,7 +34,7 @@ export class CreateBookingComponent {
     })
     .then(resp=>resp.json())
     .then(data=>{
-      if(data.Success){
+      if(data.message=="Save Completed!"){
         Swal.fire("Reservacion Exitosa :)");
       }else{
         Swal.fire("No se reservó :(");
